@@ -19,6 +19,11 @@ const posts = (await getCollection("blog")).sort(
             main {
                 width: 960px;
             }
+            .placeholder {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
             ul {
                 display: flex;
                 flex-wrap: wrap;
@@ -64,7 +69,7 @@ const posts = (await getCollection("blog")).sort(
     <body>
         <Header />
         <main>
-            <section>
+            <!-- <section>
                 <ul>
                     {
                         posts.map((post) => (
@@ -82,7 +87,10 @@ const posts = (await getCollection("blog")).sort(
                         ))
                     }
                 </ul>
-            </section>
+            </section> -->
+            <div class="placeholder">
+                <p>Coming soon!</p>
+            </div>
         </main>
         <Footer />
     </body>

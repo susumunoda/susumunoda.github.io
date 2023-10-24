@@ -1,13 +1,13 @@
 ---
-import type { CollectionEntry } from 'astro:content';
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import FormattedDate from '../components/FormattedDate.astro';
+import type { CollectionEntry } from "astro:content";
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import FormattedDate from "../components/FormattedDate.astro";
 
-type Props = CollectionEntry<'blog'>['data'];
+type Props = CollectionEntry<"blog">["data"];
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, description, pubDate, updatedDate } = Astro.props;
 ---
 
 <html lang="en">
@@ -41,10 +41,11 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 				text-align: center;
 				line-height: 1;
 			}
-			.title h1 {
-				margin: 0 0 0.5em 0;
-			}
 			.date {
+				margin-bottom: 0.5em;
+				color: rgb(var(--gray));
+			}
+			.updated-date {
 				margin-bottom: 0.5em;
 				color: rgb(var(--gray));
 			}
@@ -58,22 +59,22 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 		<Header />
 		<main>
 			<article>
-				<div class="hero-image">
-					{heroImage && <img width={1020} height={510} src={heroImage} alt="" />}
-				</div>
 				<div class="prose">
 					<div class="title">
+						<h1>{title}</h1>
 						<div class="date">
 							<FormattedDate date={pubDate} />
+						</div>
+						<div class="updated-date">
 							{
 								updatedDate && (
 									<div class="last-updated-on">
-										Last updated on <FormattedDate date={updatedDate} />
+										Last updated on{" "}
+										<FormattedDate date={updatedDate} />
 									</div>
 								)
 							}
 						</div>
-						<h1>{title}</h1>
 						<hr />
 					</div>
 					<slot />
